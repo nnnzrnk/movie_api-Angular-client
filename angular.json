@@ -22,11 +22,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/movie-api-angular-client",
+            "outputPath": "dist/",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -107,8 +107,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "84f516f6-8a3c-4ee9-9e1c-c56cff46884e"
   }
 }

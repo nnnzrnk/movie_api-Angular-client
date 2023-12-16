@@ -19,15 +19,20 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomePageComponent},
   {path: 'movies', component: MovieCardComponent },
+  {path: 'profile', component: UserProfileComponent},
   {path: '', redirectTo: 'welcome', pathMatch: 'prefix'}
 ]
 
 @NgModule({
-  declarations: [AppComponent, UserRegistrationFormComponent, UserLoginFormComponent, MovieCardComponent, WelcomePageComponent],
+  declarations: [AppComponent, UserRegistrationFormComponent, UserLoginFormComponent, MovieCardComponent, WelcomePageComponent, UserProfileComponent, NavbarComponent, MovieDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,7 +46,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes),
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

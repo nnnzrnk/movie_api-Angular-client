@@ -91,35 +91,42 @@ export class FetchApiDataService {
   }
 
   // Making the api call for updating user endpoint
-  updateUser(userName: string): Observable<any> {
+  editUser(updatedUser: any): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    return this.http
-      .put(apiUrl + 'users/' + userName, {
-        headers: new HttpHeaders({
+    return this.http.put(apiUrl + 'users/' + user.name, updatedUser, {
+      headers: new HttpHeaders(
+        {
           Authorization: 'Bearer ' + token,
-        }),
-      })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
   }
 
   // Making the api call for removing user endpoint
-  deleteUser(userName: string): Observable<any> {
+  deleteUser(): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    return this.http
-      .delete(apiUrl + 'users/' + userName, {
-        headers: new HttpHeaders({
+    return this.http.delete(apiUrl + 'users/' + user.name, {
+      headers: new HttpHeaders(
+        {
           Authorization: 'Bearer ' + token,
-        }),
-      })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+        })
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   // Making the api call for adding user's fav movie endpoint
   addFavMovie(FavMovie: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const userName = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    user.favoriteMovies.push(FavMovie)
+    localStorage.setItem('user', JSON.stringify(user));
     return this.http
-      .post(apiUrl + 'users/' + userName + '/movies/' + FavMovie, {
+      .post(apiUrl + 'users/' + user.name + '/movies/' + FavMovie, {}, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -130,14 +137,24 @@ export class FetchApiDataService {
   // Making the api call for removing user's fav movie endpoint
   deleteFavMovie(FavMovie: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const userName = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const index = user.favoriteMovies.indexOf(FavMovie)
+    if (index > -1) {
+      user.favoriteMovies.splice(index, 1)
+    }
+    localStorage.setItem('user', JSON.stringify(user))
     return this.http
-      .delete(apiUrl + 'users/' + userName + '/movies/' + FavMovie, {
+      .delete(apiUrl + 'users/' + user.name + '/movies/' + FavMovie, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  isFavoriteMovie(movieId: string): boolean{
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.favoriteMovies.indexOf(movieId) >= 0
   }
 
   // Making the api call for getting user's fav movie endpoint

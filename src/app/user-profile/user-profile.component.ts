@@ -50,7 +50,7 @@ export class UserProfileComponent implements OnInit {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+//This method will update the user's data
   updateUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
       console.log(result);
@@ -62,6 +62,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  //This method will delete the user's account
   deleteUser(): void {
     if (confirm('Sure?')) {
       this.router.navigate(['welcome']).then(() => {

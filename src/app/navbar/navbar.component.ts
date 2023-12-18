@@ -12,7 +12,8 @@ export class NavbarComponent {
     public fetchApiData: FetchApiDataService,
     public router: Router
   ) { }
-
+  
+//This method will log the user out and redirect to the welcome page
   logoutUser(): void {
     this.router.navigate(['welcome']);
     localStorage.removeItem('user');

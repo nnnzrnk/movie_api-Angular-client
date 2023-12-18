@@ -29,6 +29,7 @@ ngOnInit(): void {
   this.getMovies();
 }
 
+//This will get all movies from the API
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -37,6 +38,7 @@ getMovies(): void {
     });
   }
 
+//This will get the details of a movie's genre
 getGenreDetails(genre: any): void {
   this.dialog.open(MovieDetailsComponent, {
     data: {
@@ -46,6 +48,7 @@ getGenreDetails(genre: any): void {
   })
 }
 
+//This will get the details of a movie's director
 getDirectorDetails(director: any): void {
   this.dialog.open(MovieDetailsComponent, {
     data: {
@@ -55,6 +58,7 @@ getDirectorDetails(director: any): void {
   })
 }
 
+ //This will get the details of a movie's synopsis
 getMovieDetails(synopsis: string): void {
   this.dialog.open(MovieDetailsComponent, {
     data: {
@@ -64,6 +68,7 @@ getMovieDetails(synopsis: string): void {
   })
 }
 
+ //This will add a movie to the user's list of favorites
 addFavorite(id: string): void {
   this.fetchApiData.addFavMovie(id).subscribe(
     () => {
@@ -73,10 +78,12 @@ addFavorite(id: string): void {
     })
   }
 
+//This will check if a movie is already in the user's list of favorites
   isFavorite(id: string): boolean {
     return this.fetchApiData.isFavoriteMovie(id)
   }
 
+// This will remove a movie from the user's list of favorites
 removeFavorite(id: string): void {
   this.fetchApiData.deleteFavMovie(id).subscribe(
     () => {

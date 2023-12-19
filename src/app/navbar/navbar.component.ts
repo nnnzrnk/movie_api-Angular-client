@@ -13,7 +13,11 @@ export class NavbarComponent {
     public router: Router
   ) { }
   
-//This method will log the user out and redirect to the welcome page
+/**
+ * This is the function responsible for logging out the user
+ * @returns user and token removed from local storage
+ * @returns user navigated to welcome page
+ */
   logoutUser(): void {
     this.router.navigate(['welcome']);
     localStorage.removeItem('user');

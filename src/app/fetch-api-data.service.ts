@@ -17,21 +17,33 @@ export class FetchApiDataService {
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
-//Making the api call for the user registration endpoint
+/**
+ * Making the api call for the user registration endpoint
+ * @param userDetails 
+ * @returns user registered
+ */
   public userRegistration(userDetails: any): Observable<any> {
     return this.http
       .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError));
   }
 
-//Making the api call for the user login endpoint
+/**
+ * Making the api call for the user login endpoint
+ * @param userDetails 
+ * @returns user logged in
+ */
   public userLogin(userDetails: any): Observable<any> {
     return this.http
       .post(apiUrl + 'login', userDetails)
       .pipe(catchError(this.handleError));
   }
 
-//Making the api call for getting all movies endpoint
+/**
+ * Making the api call for getting all movies endpoint
+ * @returns all movies
+ * @throws error
+ */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
@@ -42,7 +54,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-//Making the api call for getting one movie endpoint
+/**
+ * Making the api call for getting one movie endpoint
+ * @param title 
+ * @returns one movie
+ *  @throws error
+ */
   getOneMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -54,7 +71,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-//Making the api call for getting director endpoint
+/**
+ * Making the api call for getting director endpoint
+ * @param directorName 
+ * @returns director's details
+ * @throws error
+ */
   getDirector(directorName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -66,7 +88,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-//Making the api call for getting genre endpoint
+/**
+ * Making the api call for getting genre endpoint
+ * @param genreName 
+ * @returns genre's details
+ * @throws error
+ */
   getGenre(genreName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -78,7 +105,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-//Making the api call for getting user endpoint
+/**
+ * Making the api call for getting user endpoint
+ * @param userName 
+ * @returns user's details
+ * @throws error
+ */
   getUser(userName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -90,7 +122,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-//Making the api call for updating user endpoint
+/**
+ * Making the api call for updating user endpoint
+ * @param updatedUser 
+ * @returns user's details updated
+ * @throws error
+ */
   editUser(updatedUser: any): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
@@ -105,7 +142,11 @@ export class FetchApiDataService {
     );
   }
 
-//Making the api call for deleting user
+/**
+ * Making the api call for deleting user endpoint
+ * @returns user's details deleted
+ * @throws error
+ */
   deleteUser(): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
@@ -119,7 +160,12 @@ export class FetchApiDataService {
     );
   }
 
-//Making the api call for adding user's fav movie endpoint
+/**
+ * Making the api call for adding user's fav movie endpoint
+ * @param FavMovie 
+ * @returns user's fav movie added
+ * @throws error
+ */
   addFavMovie(FavMovie: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -134,7 +180,11 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-//Making the api call for deleting user's fav movie endpoint
+/**
+ * Making the api call for deleting user's fav movie endpoint
+ * @param FavMovie 
+ * @returns  user's fav movie deleted
+ */
   deleteFavMovie(FavMovie: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -152,11 +202,21 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   * Method to check if a movie is in the user's favorite movies
+   * @param movieId 
+   * @returns boolean
+   */
   isFavoriteMovie(movieId: string): boolean{
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.favoriteMovies.indexOf(movieId) >= 0
   }
 
+  /**
+   * Method to get user's fav movies
+   * @returns user's fav movies
+   * @throws error
+   */
   getFavMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     const userName = JSON.parse(localStorage.getItem('user') || '{}');

@@ -31,8 +31,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     const user = this.getUser();
 
-    console.log('User: ', user);
-
     if (!user._id) {
       this.router.navigate(['welcome']);
       return;
@@ -46,11 +44,21 @@ export class UserProfileComponent implements OnInit {
     };
   }
 
+  /**
+   * This method will get the user's data
+   * @returns user's data
+   */
   getUser(): User {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
-//This method will update the user's data
+/**
+ * This method will update the user's data
+ * @returns user's data
+ * @returns updated user's data saved to local storage
+ * @returns user notified of success
+ * @returns user notified of error
+ */
   updateUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
       console.log(result);
@@ -62,7 +70,15 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  //This method will delete the user's account
+/**
+ * This method will delete the user's account
+ * @returns confirmation prompt
+ * @returns user's account deleted
+ * @returns user navigated to welcome page
+ * @returns user notified of success
+ * @returns user notified of error
+ * @returns user token and user details removed from local storage
+ */
   deleteUser(): void {
     if (confirm('Sure?')) {
       this.router.navigate(['welcome']).then(() => {

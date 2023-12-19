@@ -29,7 +29,11 @@ ngOnInit(): void {
   this.getMovies();
 }
 
-//This will get all movies from the API
+
+/**
+ * This will get all movies from the API
+ * @returns movies
+ */
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -38,7 +42,11 @@ getMovies(): void {
     });
   }
 
-//This will get the details of a movie's genre
+/**
+ * This will get the details of a movie's genre
+ * @param genre
+ * @returns genre name and description
+ */
 getGenreDetails(genre: any): void {
   this.dialog.open(MovieDetailsComponent, {
     data: {
@@ -48,7 +56,11 @@ getGenreDetails(genre: any): void {
   })
 }
 
-//This will get the details of a movie's director
+/**
+ * This will get the details of a movie's director
+ * @param director 
+ * @returns director name and bio
+ */
 getDirectorDetails(director: any): void {
   this.dialog.open(MovieDetailsComponent, {
     data: {
@@ -58,7 +70,11 @@ getDirectorDetails(director: any): void {
   })
 }
 
- //This will get the details of a movie's synopsis
+/**
+ * This will get the details of a movie's synopsis
+ * @param synopsis 
+ * @returns movie synopsis and description title
+ */
 getMovieDetails(synopsis: string): void {
   this.dialog.open(MovieDetailsComponent, {
     data: {
@@ -68,7 +84,11 @@ getMovieDetails(synopsis: string): void {
   })
 }
 
- //This will add a movie to the user's list of favorites
+/**
+ * This will add a movie to the user's list of favorites
+ * @param id 
+ * @returns success message
+ */
 addFavorite(id: string): void {
   this.fetchApiData.addFavMovie(id).subscribe(
     () => {
@@ -78,12 +98,20 @@ addFavorite(id: string): void {
     })
   }
 
-//This will check if a movie is already in the user's list of favorites
+/**
+ * This will check if a movie is already in the user's list of favorites
+ * @param id 
+ * @returns boolean 
+ */
   isFavorite(id: string): boolean {
     return this.fetchApiData.isFavoriteMovie(id)
   }
 
-// This will remove a movie from the user's list of favorites
+/**
+ * This will remove a movie from the user's list of favorites
+ * @param id 
+ * @returns success message
+ */
 removeFavorite(id: string): void {
   this.fetchApiData.deleteFavMovie(id).subscribe(
     () => {

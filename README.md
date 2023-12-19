@@ -1,5 +1,23 @@
+# MyFlix (Angular)
+### The application was built using Angular and based on its existing server-side code (REST API and database)
+___
+## Functionality
+* App displays a welcome view where users will be able to either log in or register an account
+* Once authenticated, the user now views all movies
+* The single movie view contains 4 additional features: 
+   1. A button that when clicked takes a user to the director view, where details about the director of that particular movie are displayed
+   2. A button that when clicked takes a user to the genre view, where details about that particular genre of the movie are displayed.
+   3. A button that when clicked takes a user to the sinopsis view, where description about that particular movie is displayed.
+   4. Button to add or remove a movie from the list of favorite movies.
+* There is also a view for updating user data or deleting an account
+* Convenient navigation through the application using the navbar component that allows the user to switch to the view where all movies are displayed, profile view or logout from the account
 
-# MovieApiAngularClient
+<img width="49%" src="./src/assets/img/welcome.png" alt="screenshot of welcome view"/><img width="49%" style="float: right"   src="./src/assets/img/movies-page.png" alt="screenshot of movies view"/>
+
+<img width="49%" src="./src/assets/img/profile-page.png" alt="screenshot of profile view"/><img width="49%" style="float: right" src="./src/assets/img/details-dialog.png" alt="screenshot of details dialog"/>
+___
+
+## Link to the App https://nnnzrnk.github.io/movie_api-Angular-client/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
 

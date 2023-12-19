@@ -17,7 +17,7 @@ ___
 <img width="45%" src="./src/assets/img/profile-page.png" alt="screenshot of profile view"/><img width="49%" style="float: right" src="./src/assets/img/details-dialog.png" alt="screenshot of details dialog"/>
 ___
 
-## Link to the App https://nnnzrnk.github.io/movie_api-Angular-client/
+## Link to the [App](https://nnnzrnk.github.io/movie_api-Angular-client/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
 

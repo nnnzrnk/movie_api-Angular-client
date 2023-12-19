@@ -12,9 +12,9 @@ ___
 * There is also a view for updating user data or deleting an account
 * Convenient navigation through the application using the navbar component that allows the user to switch to the view where all movies are displayed, profile view or logout from the account
 
-<img width="49%" src="./src/assets/img/welcome.png" alt="screenshot of welcome view"/><img width="49%" style="float: right"   src="./src/assets/img/movies-page.png" alt="screenshot of movies view"/>
+<img width="45%" src="./src/assets/img/welcome.png" alt="screenshot of welcome view"/><img width="49%" style="float: right"   src="./src/assets/img/movies-page.png" alt="screenshot of movies view"/>
 
-<img width="49%" src="./src/assets/img/profile-page.png" alt="screenshot of profile view"/><img width="49%" style="float: right" src="./src/assets/img/details-dialog.png" alt="screenshot of details dialog"/>
+<img width="45%" src="./src/assets/img/profile-page.png" alt="screenshot of profile view"/><img width="49%" style="float: right" src="./src/assets/img/details-dialog.png" alt="screenshot of details dialog"/>
 ___
 
 ## Link to the App https://nnnzrnk.github.io/movie_api-Angular-client/

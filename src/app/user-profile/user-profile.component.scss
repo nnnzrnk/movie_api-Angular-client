@@ -33,3 +33,19 @@
     padding: 1.3rem;
   }
 
+@media screen and (max-width: 768px) {
+  .profile-form {
+    max-width: 80%;
+  }
+  .update-btn {
+    font-size: 14px;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .delete-btn {
+    font-size: 14px;
+    padding: 1rem;
+    float: right;
+    margin: 1rem
+  }
+}

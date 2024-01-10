@@ -24,3 +24,20 @@
     letter-spacing: 1px;
 
   }
+
+  .menu-s {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .menu-l {
+      display: none;
+    }
+
+    .menu-s {
+      display: block;
+      color: #e8f7ee;
+      background-color: #3c362a;
+      font-family: inherit;
+    }
+  }

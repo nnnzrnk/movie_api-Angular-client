@@ -23,6 +23,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomePageComponent},
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes),
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],
